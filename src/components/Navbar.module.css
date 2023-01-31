@@ -1,9 +1,10 @@
 .opened {
     transition:  0.3s ;
-    background-color: orange;
+    
 }
 
 .closed {
     transition:  0.3s ;
-    background-color: none;
-}
+    }
+
+

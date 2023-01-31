@@ -69,3 +69,51 @@ a {
   text-decoration: none;
 }
 
+.white {
+  transition: 0.3s;
+  background-color: white;
+}
+
+.orange {
+  transition: 0.3s;
+  background-color: #eb8921 ;
+}.yellow {
+  transition: 0.3s;
+  background-color: #fcb900;
+}
+
+.red {
+  transition: 0.3s;
+  background-color: #e04915;
+}
+
+.hamburger {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  background-color: #fff;
+  display: block;
+  margin: 5px 0;
+  height: 2px;
+  width: 30px;
+}
+
+.hamburger.open .line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open .line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.hamburger .line {
+  /* ... */
+  transition: all 0.1s ease-in;
+}
