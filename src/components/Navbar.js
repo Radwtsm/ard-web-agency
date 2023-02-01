@@ -1,100 +1,124 @@
 'use client';
 
-import styles from './Navbar.module.css'
+
 
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import Logo from './Logo'
 
-import {MdOutlineMenu,MdOutlineMenuOpen} from "react-icons/md";
-import {motion, AnimatePresence} from 'framer-motion'
+import { MdOutlineMenu, MdOutlineMenuOpen } from "react-icons/md";
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { useRouter } from 'next/router';
 
 
- 
 
 
+const Effect = ({ children }) => {
+    return <motion.p whileHover={{ scale: 1.2 }}
+        whileTap={{
+            scale: 0.8,
 
-const  dropdown = (isOpen) => {
-    return (
-        <AnimatePresence>
-    {isOpen && 
-    (<motion.ul
-    key='dropdown'
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-    transition={{ duration: 0.2 }}
-    className='h-screen flex flex-col justify-center items-center gap-10 text-7xl '>
-        <Link href="/servizi">Servizi</Link>
-        <Link href="/progetti">Progetti</Link>
-        <Link href="/team">Team</Link>
-    </motion.ul>)}
-    </AnimatePresence>
-    )
+        }}>
+        {children}
+    </motion.p>
 }
-const Navbar = () => {
 
-    
 
-    const [colors,setColors] = useState({
-        logo:'orange',
-        hex:'#eb8921',
-        nav:'white'
+const Navbar = ({ openMenu, closeMenu, switchMenu, isOpen }) => {
+
+
+    useEffect(() => console.log(isOpen), [isOpen]);
+
+
+    //colori iniziali
+    const [colors, setColors] = useState({
+        logo: 'orange',
+        hex: '#eb8921',
+        nav: 'white'
     })
 
     const router = useRouter();
 
-    useEffect( () => {
+
+    //scelta colori navbar
+    useEffect(() => {
         if (router.pathname === '/') {
-            
+
             setColors({
-                bg:'white',
-                logo:'orange',
-                hex:'#eb8921',
-                nav:'white'
+                bg: 'white',
+                logo: 'orange',
+                hex: '#eb8921',
+                text: '#eb8921',
+                nav: 'white',
+                link: 'orange-links'
             })
         } else if (router.pathname === '/servizi') {
             setColors({
-                logo:'white',
-                bg:'red'
+                logo: 'white',
+                bg: 'red',
+                link: 'red-links',
+                text: 'red-links'
+
             })
         } else if (router.pathname === '/progetti') {
             setColors({
-                logo:'white',
-                bg:'orange'
+                logo: 'white',
+                bg: 'orange',
+                link: 'orange-links',
+                text: 'orange-links'
             })
         } else if (router.pathname === '/team') {
             setColors({
-                logo:'white',
-                bg:'yellow'
+                logo: 'white',
+                bg: 'yellow',
+                link: 'yellow-links',
+                text: 'yellow-links'
             })
         }
-        
+
     }
-    
-    ,[router.pathname])
+
+        , [router.pathname])
+
+
+    console.log(isOpen)
 
 
 
 
-  let [isOpen,setIsOpen] = useState(false)
 
-  return (
-    <> 
-            <nav className={`flex justify-between px-6 py-3 ${colors.bg}`} >
-                <Link href='/'><Logo color={colors.logo} /></Link>
-                {/* <button className={`rounded-full p-2 ${`transition:  0.3s ; background-color:${colors.logo}`}` } onClick={() => { setIsOpen(!isOpen) }}>{isOpen ? <MdOutlineMenuOpen size={70} fill={colors.logo}/> : <MdOutlineMenu size={70} fill={colors.logo}/>}</button> */}
-                <button onClick={() => { setIsOpen(!isOpen) }} class={`hamburger ${isOpen && 'open'}`}>
-	<span class="line"></span>
-	<span class="line"></span>
-	<span class="line"></span>
-</button>
+    return (
+        <>
+            <nav className={`flex justify-between px-6 py-3 items-center ${colors.bg}`} >
+                <Link onClick={closeMenu} href='/'><Logo color={colors.logo} /></Link>
+                <button className={`${`transition:  0.3s ; background-color:${colors.logo}`}`} onClick={switchMenu}>{isOpen ? <Effect><MdOutlineMenuOpen size={30} fill={colors.logo} /></Effect> : <Effect><MdOutlineMenu size={30} fill={colors.logo} /></Effect>}</button>
             </nav>
-            {isOpen ? dropdown(isOpen) : null}
-    </>
-)
+            <AnimatePresence>
+                {isOpen &&
+
+
+                    <motion.ul
+                        key='dropdown'
+                        initial={{ opacity: 0, y: -200 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y:200 }}
+                        transition={{ duration: 0.1 }}
+                        className={`z-10 h-screen flex flex-col justify-center items-center gap-10 text-2xl ${colors.link} `}>
+                        <Link onClick={closeMenu} href="/"><Effect>Home</Effect></Link>
+                        <Link onClick={closeMenu} href="/servizi"><Effect>Servizi</Effect></Link>
+                        <Link onClick={closeMenu} href="/progetti"><Effect>Progetti</Effect></Link>
+                        <Link onClick={closeMenu} href="/team"><motion.p whileHover={{ scale: 1.2 }}
+                            whileTap={{
+                                scale: 0.8,
+
+                            }}>Team</motion.p></Link>
+                    </motion.ul>
+
+                }
+            </AnimatePresence>
+        </>
+    )
 }
 
 

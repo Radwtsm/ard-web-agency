@@ -20,7 +20,7 @@ useEffect( () => {
         
         setColors({
           bg:'white',
-          text:'gray',
+          text:'orange',
         })
     } else if (router.pathname === '/servizi') {
         setColors({

@@ -87,33 +87,19 @@ a {
   background-color: #e04915;
 }
 
-.hamburger {
-  border: 0;
-  background-color: transparent;
-  cursor: pointer;
+
+
+.orange-links {
+  transition: 0.3s;
+  color: #eb8921 ;
+}
+.yellow-links {
+  transition: 0.3s;
+  color: #fcb900;
 }
 
-.hamburger .line {
-  background-color: #fff;
-  display: block;
-  margin: 5px 0;
-  height: 2px;
-  width: 30px;
+.red-links {
+  transition: 0.3s;
+  color: #e04915;
 }
 
-.hamburger.open .line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.hamburger.open .line:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.open .line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-.hamburger .line {
-  /* ... */
-  transition: all 0.1s ease-in;
-}
