@@ -2,10 +2,22 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useReducer } from "react";
 import Menureducer from "./menuState";
-import { AnimatePresence, MotionConfig } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 
+const variants = {
 
+  exit:{
+    opacity:0
+  },
+  animate: {
+    opacity:1
+  },
+  transition:{
+    duration:0.3
+  }
+  
+}
 
 
 
@@ -49,13 +61,15 @@ export default function Layout ({children}) {
             {isOpen ? null : <>
             <motion.div
                     key='body'
-                    className="overflow-hidden"
-                    initial={{ opacity: 0 , }}
-                    animate={{ opacity: 1}}
-                    exit={{ opacity: 0}}
-                    transition={{ duration: 0.3 }}
+                    className=""
+                    initial={variants.exit}
+                    animate={variants.animate}
+                    exit={variants.exit}
+                    transition={variants.transition}
             >
+            <div className="mx-2">
             {children}
+            </div>
             <Footer />
             </motion.div>
             </>}
