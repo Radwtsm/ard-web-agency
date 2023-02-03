@@ -1,11 +1,34 @@
-import Head from 'next/head'
+import Head from "next/head";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
+function Section({ children }) {
+  const ref = useRef(null);
 
+  return (
+    <div className="">
+      <section className="h-fit" ref={ref}>
+        <motion.span>{children}</motion.span>
+      </section>
+    </div>
+  );
+}
 
-
+const variants = {
+  initial: { opacity: 0, y: -20 },
+  inView: { opacity: 1, y: 0 },
+  transition: { duration: 3 },
+};
 
 export default function Home() {
+  const { scrollYProgress } = useScroll();
 
+  const y_header_text = useTransform(scrollYProgress, [0, 1], [0, 400]);
+  const header_text_variants = {
+    visible: { opacity: 1,y:0 },
+    hidden: { opacity: 0,y:-100 },
+  };
 
   return (
     <>
@@ -15,9 +38,35 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main >
-    <p>ciao</p>
+      <main>
+        <div className="header-container">
+          <img src="/header.jpg" />
+          <Section>
+            <motion.p
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.7 }}
+              variants={header_text_variants}
+              style={{ y: y_header_text }}
+              className="header-text text-7xl font-black"
+            >
+              ARD.
+            </motion.p>
+          </Section>
+        </div>
+        <div className="h-screen"></div>
+        <div className="h-screen"></div>
       </main>
     </>
-  )
+  );
+}
+{
+  /* <motion.h1
+                   initial={"initial"}
+                   whileInView={"inView"}
+                   variants={variants}
+                   transition={{duration:1}}
+       className='header-text text-7xl font-black'>
+        ARD.
+        </motion.h1> */
 }

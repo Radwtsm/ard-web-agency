@@ -61,7 +61,7 @@ export default function Layout ({children}) {
             {isOpen ? null : <>
             <motion.div
                     key='body'
-                    className=""
+                    className="flex flex-col"
                     initial={variants.exit}
                     animate={variants.animate}
                     exit={variants.exit}

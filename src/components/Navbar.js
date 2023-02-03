@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 import Logo from './Logo'
 
 import { MdOutlineMenu, MdOutlineMenuOpen } from "react-icons/md";
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useScroll } from 'framer-motion'
 
 import { useRouter } from 'next/router';
 
@@ -23,6 +23,8 @@ const Effect = ({ children }) => {
         {children}
     </motion.p>
 }
+
+
 
 
 const Navbar = ({ openMenu, closeMenu, switchMenu, isOpen }) => {
@@ -103,7 +105,7 @@ const Navbar = ({ openMenu, closeMenu, switchMenu, isOpen }) => {
                         initial={{ opacity: 0, y: -200 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y:200 }}
-                        transition={{ duration: 0.1 }}
+                        transition={{ duration: 0.3 }}
                         className={`z-10 h-screen flex flex-col justify-center items-center gap-10 text-2xl ${colors.link} `}>
                         <Link onClick={closeMenu} href="/"><Effect>Home</Effect></Link>
                         <Link onClick={closeMenu} href="/servizi"><Effect>Servizi</Effect></Link>
