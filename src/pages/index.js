@@ -3,6 +3,9 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 import { useRef } from "react";
 
+import Divider from "@/components/divider";
+import ActivityCard from "@/components/ActivityCard";
+
 
 function Section({ children }) {
   const ref = useRef(null);
@@ -46,7 +49,7 @@ export default function Home() {
       </Head>
       <main>
         <div className="header-container">
-          <motion.img style={{opacity:header_fade}} src="/ard_bg.jpg" />
+          <motion.img className="header-bg" style={{opacity:header_fade}} src="/ard_bg.jpg" />
 
           <Section>
             <motion.img
@@ -98,6 +101,27 @@ export default function Home() {
           </motion.svg>
           </div>
 
+          {/* show */}
+          <div className="h-screen">
+
+          </div>
+
+          {/* cos'è ARD. */}
+          <section className="text-center  flex flex-col justify-center items-center">
+            
+            {/* <h2 className="red-text  font-bold text-3xl">Cos&apos;è ARD.</h2> */}
+            
+            <div className="flex flex-col gap-20">
+            <ActivityCard title="Grafica" y_dist={200}/>
+            
+            <ActivityCard title={'Web Dev'}
+             y_dist={120}/>
+            
+            <ActivityCard title="Gestione Social" y_dist={110}/>
+            </div>
+
+          </section>
+
         
         <div className="h-screen "></div>
         <div className="h-screen"></div>
@@ -105,13 +129,4 @@ export default function Home() {
     </>
   );
 }
-{
-  /* <motion.h1
-                   initial={"initial"}
-                   whileInView={"inView"}
-                   variants={variants}
-                   transition={{duration:1}}
-       className='header-text text-7xl font-black'>
-        ARD.
-        </motion.h1> */
-}
+

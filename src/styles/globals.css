@@ -136,3 +136,26 @@ a {
 
   overflow: hidden;
 }
+
+.red-text {
+  color: #B42D2F;
+}
+
+.img-test {
+  height: 10rem;
+  border-radius: 1rem;
+ 
+  background-color: #FE6F66;
+
+  -webkit-box-shadow: 11px 8px 0px 0px #B42D2F; 
+  box-shadow: 11px 8px 0px 0px #FFB1A3;
+}
+
+.work-title {
+  color: white;
+  font-weight: 400;
+}
+
+.header-bg {
+  /* transform: scaleY(-1); */
+}
