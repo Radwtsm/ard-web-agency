@@ -10,6 +10,7 @@ import { MdOutlineMenu, MdOutlineMenuOpen } from "react-icons/md";
 import { motion, AnimatePresence, useMotionValue, useScroll } from 'framer-motion'
 
 import { useRouter } from 'next/router';
+import { color } from '@mui/system';
 
 
 
@@ -49,11 +50,11 @@ const Navbar = ({ openMenu, closeMenu, switchMenu, isOpen }) => {
 
             setColors({
                 bg: 'white',
-                logo: 'orange',
+                logo: '#B42D2F',
                 hex: '#eb8921',
                 text: '#eb8921',
                 nav: 'white',
-                link: 'orange-links'
+                link: '#B42D2F'
             })
         } else if (router.pathname === '/servizi') {
             setColors({
@@ -106,7 +107,8 @@ const Navbar = ({ openMenu, closeMenu, switchMenu, isOpen }) => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y:200 }}
                         transition={{ duration: 0.3 }}
-                        className={`z-10 h-screen flex flex-col justify-center items-center gap-10 text-2xl ${colors.link} `}>
+                        style={{color:`${colors.link}`}}
+                        className={`z-10 h-screen flex flex-col justify-center items-center gap-10 text-2xl `}>
                         <Link onClick={closeMenu} href="/"><Effect>Home</Effect></Link>
                         <Link onClick={closeMenu} href="/servizi"><Effect>Servizi</Effect></Link>
                         <Link onClick={closeMenu} href="/progetti"><Effect>Progetti</Effect></Link>

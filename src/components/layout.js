@@ -67,7 +67,7 @@ export default function Layout ({children}) {
                     exit={variants.exit}
                     transition={variants.transition}
             >
-            <div className="mx-2">
+            <div className="">
             {children}
             </div>
             <Footer />

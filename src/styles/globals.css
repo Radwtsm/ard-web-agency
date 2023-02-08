@@ -90,31 +90,49 @@ a {
 
 
 
-.orange-links {
-  transition: 0.3s;
-  color: #eb8921 ;
-}
-.yellow-links {
-  transition: 0.3s;
-  color: #fcb900;
-}
-
-.red-links {
-  transition: 0.3s;
-  color: #e04915;
-}
 
 .header-container {
-  position: relative;
-  text-align: center;
+  height: 90vh;
 
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  position: relative;
+  
+  overflow:hidden;
+
+
+
 }
 
 .header-text {
   position: absolute;
+
   top: 50%;
-  left: 50%;
+  left: 19%;
   transform: translate(-50%, -50%);
+}
+
+.header-orange {
+  
+  position: absolute;
+  left: -30%;
+ top: 0%;
+  
+
+}
+
+.header-red {
+  position: absolute;
+  top: 40%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+
+  overflow: hidden;
+}
+
+.header-yellow {
+  position: absolute;
+  top:90%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+
+  overflow: hidden;
 }
